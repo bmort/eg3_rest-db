@@ -1,0 +1,24 @@
+version: '3.4'
+
+services:
+  master:
+    image: skasip/eg3_master
+    networks:
+      - eg3_master
+    ports:
+      - 5000:5000
+    build: ./mc-service
+
+  master_db:
+    image: skasip/eg3_master_db
+    volumes:
+      - master_db-data:/data
+    networks:
+      - eg3_master
+    build: ./mc-db
+
+volumes:
+  master_db-data:
+
+networks:
+  eg3_master:
