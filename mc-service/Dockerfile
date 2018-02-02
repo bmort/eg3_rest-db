@@ -6,6 +6,7 @@ COPY requirements.txt /app/requirements.txt
 
 RUN apk update && \
     pip install --no-cache-dir -r /app/requirements.txt && \
+    pip install --no-cache-dir gunicorn>=19.7.1 && \
     apk add --no-cache curl && \
     find /usr/local/lib/python3.6/ -name 'tests' -exec rm -r '{}' + && \
     rm -r /root/.cache

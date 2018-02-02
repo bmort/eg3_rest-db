@@ -7,6 +7,8 @@ services:
       - eg3_master
     ports:
       - 5000:5000
+    environment:
+      - DATABASE_HOST=master_db
     build: ./mc-service
 
   master_db:
@@ -15,6 +17,8 @@ services:
       - master_db-data:/data
     networks:
       - eg3_master
+    ports:
+      - 6379:6379
     build: ./mc-db
 
 volumes:
